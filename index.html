@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mehmood's Rejection Ledger</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --ink: #1e252f;
+      --muted: #556070;
+      --card: #fffdf8;
+      --accent: #2f8f7a;
+      --accent-soft: #d7efe8;
+      --ring: rgba(47, 143, 122, 0.25);
+      --shadow: 0 22px 44px rgba(21, 33, 40, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: radial-gradient(circle at 15% 10%, #fff7dd 0, transparent 35%),
+        radial-gradient(circle at 90% 5%, #e7f4ff 0, transparent 32%),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    .layout {
+      width: min(1080px, 92vw);
+      margin: clamp(1.2rem, 2vw + 0.8rem, 2.6rem) auto;
+      display: grid;
+      gap: clamp(1rem, 2vw, 1.8rem);
+    }
+
+    .hero {
+      background: linear-gradient(145deg, #fffaf0, #f8fffc);
+      border: 1px solid #f1e6d6;
+      border-radius: 24px;
+      padding: clamp(1.2rem, 2vw + 0.7rem, 2.3rem);
+      box-shadow: var(--shadow);
+      animation: rise 650ms ease-out both;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0.45rem 0 0.55rem;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.8rem, 2.8vw, 3.1rem);
+      line-height: 1.1;
+    }
+
+    .subhead {
+      margin: 0;
+      max-width: 68ch;
+      color: var(--muted);
+      font-size: clamp(0.96rem, 0.4vw + 0.9rem, 1.08rem);
+    }
+
+    .grid {
+      display: grid;
+      gap: clamp(0.9rem, 1.8vw, 1.4rem);
+      grid-template-columns: 1.6fr 1fr;
+      align-items: start;
+    }
+
+    .panel,
+    .sidebar {
+      background: var(--card);
+      border-radius: 24px;
+      border: 1px solid #ece5dc;
+      box-shadow: var(--shadow);
+      padding: clamp(1.1rem, 1.4vw + 0.8rem, 1.8rem);
+      animation: rise 820ms ease-out both;
+    }
+
+    article p {
+      margin: 0 0 1rem;
+      color: #2e3642;
+      font-size: clamp(0.98rem, 0.5vw + 0.9rem, 1.08rem);
+    }
+
+    article p:first-of-type::first-letter {
+      float: left;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 3rem;
+      line-height: 0.9;
+      padding-right: 0.36rem;
+      color: #245f83;
+    }
+
+    .kpis {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+    }
+
+    .kpi {
+      background: linear-gradient(160deg, #f8fcfa, #f2f8ff);
+      border: 1px solid #dfebea;
+      border-radius: 15px;
+      padding: 0.75rem 0.85rem;
+    }
+
+    .kpi strong {
+      display: block;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.28rem;
+      line-height: 1.1;
+      margin-bottom: 0.16rem;
+      color: #1f3248;
+    }
+
+    .kpi span {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .note {
+      margin: 0;
+      padding: 0.85rem 0.95rem;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      border: 1px solid #b9dfd4;
+      font-size: 0.92rem;
+      color: #19443a;
+    }
+
+    .timeline {
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .timeline li {
+      border-left: 3px solid #b7d8ce;
+      padding-left: 0.65rem;
+      color: #314252;
+      font-size: 0.93rem;
+    }
+
+    footer {
+      text-align: center;
+      color: #5a6777;
+      font-size: 0.86rem;
+      padding-bottom: 0.5rem;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 920px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero,
+      .panel,
+      .sidebar {
+        border-radius: 18px;
+      }
+
+      article p:first-of-type::first-letter {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="layout">
+    <header class="hero">
+      <p class="eyebrow">Discord Family Chronicles</p>
+      <h1>The Conscript of Mehmood and the Rejected Calls</h1>
+      <p class="subhead">A small formal record, written with affection, documenting the most famous unanswered pings in our house.</p>
+    </header>
+
+    <section class="grid">
+      <article class="panel">
+        <p>In our house, there are many tiny traditions, and one of the strangest is my repeated attempt to call my brother Mehmood on Discord. Every week I open my laptop, fix my headset, and click his name as if I am beginning a state ceremony. The ringtone travels into digital space, my hope rises, and then the same sharp sentence appears: call rejected. It is never late, never dramatic, and never confusing. It happens with the clean confidence of a stamp placed on an official letter. If there were a ministry for unanswered calls, Mehmood would be both the clerk and the governor.</p>
+
+        <p>I have started tracking these moments like weather patterns. Monday evenings are risky because he claims he is studying. Tuesday nights are worse because he is suddenly helping someone with a task that did not exist five minutes earlier. Wednesday looks promising until he remembers he must eat, and somehow that meal lasts longer than a full movie trilogy. Thursday is unpredictable, while Friday gives me false hope, because he appears online but rejects the call before the first complete ring. Weekends should be easier, yet even then he has mysterious missions, urgent snacks, and heroic naps that prevent all audio contact.</p>
+
+        <p>At first, I treated each rejection like a personal defeat. I would stare at the screen and wonder what urgent event could be stronger than talking to your own sibling for ten minutes. Over time, I realized this pattern was less about avoidance and more about Mehmood being hilariously consistent. He rejects calls with a kind of artistic discipline. Some people practice piano scales, some practice coding challenges, and my brother appears to practice declining my requests for voice chat. There is rhythm in it, almost choreography, like he rehearsed each refusal with perfect timing.</p>
+
+        <p>Still, behind this comedy there is genuine brotherhood. We share jokes, meals, and old stories that can make an ordinary afternoon feel like a festival. He remembers small details I forget, and he defends me in conversations where I am not even present. When I need practical help, he shows up fast. So this record is not a complaint carved in stone. It is a playful witness statement, admitting that family bonds are sometimes loud, sometimes silent, and sometimes represented by one tiny notification that says rejected.</p>
+
+        <p>Today I write this little conscript as a peace treaty between expectation and reality. I accept that Mehmood may never become the person who answers on the first try. He is still my brother, still important, and still one of the funniest people in my world. I will continue calling him, perhaps with lower expectations and better timing, and he will continue surprising me with new excuses that sound impossible but somehow believable. One day he may accept the call, and when he does, history will record it as a major family event. Until then, this page stands as the elegant archive of every polite digital rejection, with patience, laughter, grace, and persistence.</p>
+      </article>
+
+      <aside class="sidebar">
+        <div class="kpis">
+          <div class="kpi">
+            <strong>143</strong>
+            <span>Total logged call rejections</span>
+          </div>
+          <div class="kpi">
+            <strong>11</strong>
+            <span>Most rejections in one week</span>
+          </div>
+          <div class="kpi">
+            <strong>1</strong>
+            <span>Rare accepted call this year</span>
+          </div>
+        </div>
+
+        <p class="note">House rule: every rejection earns one new funny excuse. Every accepted call earns instant forgiveness.</p>
+
+        <ul class="timeline">
+          <li><strong>Phase 1:</strong> Confusion, repeated redialing, and hopeful optimism.</li>
+          <li><strong>Phase 2:</strong> Data collection, pattern mapping, and sibling negotiations.</li>
+          <li><strong>Phase 3:</strong> Acceptance, humor, and this elegant public archive.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <footer>Built as a responsive static page for all screens: phone, tablet, and desktop.</footer>
+  </main>
+</body>
+</html>
